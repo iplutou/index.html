@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Me!</title>
+    <link href="1icon.png" rel="icon" type="image/png" sizes="48x48" />
+    <style>
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+
+                justify-content: center; 
+                text-align: center;
+                align-items: center;
+            }
+
+            .menu-section, .order-section {
+                width: 100%; 
+                padding: 10px;
+            }
+
+            .menu-item {
+                width: 100%; 
+                margin: 10px 0;
+            }
+
+            .menu-item img {
+                width: 70px; 
+                height: 70px;
+            }
+
+            header {
+                text-align: center; 
+                padding: 15px;
+            }
+
+            .header-links a {
+                 margin: 5px 0;
+            }
+
+            .order-section {
+                border-left: none; 
+                margin-top: 15px;
+            }
+
+            h2 {
+                font-size: 1.2em; 
+            }
+
+            .select-button {
+                font-size: 0.9em; 
+                padding: 5px; 
+            }
+        }
+
+
+
+        /*        body*/
+
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 20px;
+            padding: 20px;
+            background-color: #FFE1FF;
+
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        header {
+            background-color: #EE66A6;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header-title {
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        #header-logo{
+            width: 70px; 
+            height: auto; 
+            margin-bottom: -15px;
+        }
+
+
+
+        .header-links {
+            text-align: center;
+            margin: 10px;
+        }
+
+
+        .header-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: #D91656;
+        }
+
+
+        .language-selection {
+            margin: 10px;
+            text-align: right;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .menu-section {
+            width: 70%;
+            padding: 20px;
+        }
+
+
+        .category {
+            margin-bottom: 20px;
+        }
+
+
+        .category h2 {
+            background-color: #D91656;
+            color: white;
+            padding: 10px;
+        }
+
+
+        .menu-item {
+            display: inline-block;
+            width: 30%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #D91656;
+            background-color: #fff;
+            text-align: center;
+        }
+
+
+        .menu-item img {
+            width: 70px;
+            height: 100px;
+        }
+
+
+        .menu-item button {
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #EE66A6;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+
+        .order-section {
+            width: 25%;
+            padding: 20px;
+            background-color: #EE66A6;
+            border-left: 1px solid #EE66A6;
+        }
+
+
+        .order-section h3 {
+            text-align: center;
+            background-color: #D91656;
+            color: white;
+            padding: 10px;
+            border-radius: 10px ;
+        }
+
+
+
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+
+        .order-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+        <img id="header-logo" src="1icon.png" alt="Logo">
+
+        <h1 class="header-title">
+            Byte Me! Menu
+        </h1>
+        <nav>
+            <div class="header-links">
+                <a href="#noodles" class="noodles-link">Noodles</a>
+                <a href="#rice" class="rice-link">Food</a>
+                <a href="#drinks" class="drinks-link">Drinks</a>
+            </div>
+        </nav>
+    </header>
+       
+
+      <div class="language-selection">
+        <label for="language">Choose Language:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="english">English</option>
+            <option value="thai">ไทย</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <!-- Menu Section -->
+        <div class="menu-section">
+            <!-- Noodle Category -->
+            <div id="noodles" class="category">
+                <h2 class="section-title">Noodles</h2>
+                <div class="menu-item">
+                    <img src="noodle1.png" alt="Noodle Dish">
+                    <p class="name">Pad Thai</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Pad Thai', 50)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="noodle2.png" alt="Noodle Dish">
+                    <p class="name">Kuay Teow</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Kuay Teow', 50)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="noodle3.png" alt="Noodle Dish">
+                    <p class="name">Kuay Teow Tom Yum</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Kuay Teow Tom Yum', 50)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="noodle4.png" alt="Noodle Dish">
+                    <p class="name">Chicken Noodle</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Chicken Noodle', 50)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="noodle5.png" alt="Noodle Dish">
+                    <p class="name">Pork Noodle</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Pork Noodle', 50)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="noodle6.png" alt="Noodle Dish">
+                    <p class="name">Boat Noodle</p>
+                    <p class="price">20 THB</p>
+                    <button onclick="addToOrder('Boat Noodle', 20)" class="select-button">Select</button>
+                </div>
+            </div>
+
+            
+
+            <!-- Food Category -->
+            <div id="rice" class="category">
+                <h2 class="rice-title">Food</h2>
+                <div class="menu-item">
+                    <img src="food1.png" alt="Rice Dish">
+                    <p class="name">Pork Stick Rice</p>
+                    <p class="price"><h5></h5>50 THB</p>
+                    <button onclick="addToOrder('Pork Stick Rice', 50)" class="select-button">Select</button>
+                </div>
+
+                <div class="menu-item">
+                    <img src="food2.png" alt="Rice Dish">
+                    <p class="name">Mango Sticky Rice</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Mango Sticky Rice', 50)" class="select-button">Select</button>
+                </div>
+
+                <div class="menu-item">
+                    <img src="food3.png" alt="Rice Dish">
+                    <p class="name">Fried Rice</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Fried Rice', 50)" class="select-button">Select</button>
+                </div>
+
+                <div class="menu-item">
+                    <img src="food4.png" alt="Rice Dish">
+                    <p class="name">Green Curry</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Green Curry', 50)" class="select-button">Select</button>
+                </div>
+
+                <div class="menu-item">
+                    <img src="food5.png" alt="Rice Dish">
+                    <p class="name">Tom Yum Kung</p>
+                    <p class="price">60 THB</p>
+                    <button onclick="addToOrder('Tom Yum Kung', 60)" class="select-button">Select</button>
+                </div>
+
+                 
+
+                <div class="menu-item">
+                    <img src="food6.png" alt="Rice Dish">
+                    <p class="name">Papaya Salad</p>
+                    <p class="price">50 THB</p>
+                    <button onclick="addToOrder('Papaya Salad', 50)" class="select-button">Select</button>
+                </div>
+            </div>
+
+
+            <!-- Drink Category -->
+            <div id="drinks" class="category">
+                <h2 class="drinks-title">Drinks</h2>
+                <div class="menu-item">
+                    <img src="drink1.png" alt="Drink">
+                    <p class="name">Water</p>
+                    <p class="price">10 THB</p>
+                    <button onclick="addToOrder('Water', 10)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="drink2.png" alt="Drink">
+                    <p class="name">Coca Cola</p>
+                    <p class="price">26 THB</p>
+                    <button onclick="addToOrder('Coca Cola', 26)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="drink3.png" alt="Drink">
+                    <p class="name">Pepsi</p>
+                    <p class="price">26 THB</p>
+                    <button onclick="addToOrder('Pepsi', 26)" class="select-button">Select</button>
+                </div>
+                <div class="menu-item">
+                    <img src="drink4.png" alt="Drink">
+                    <p class="name">Thai Tea</p>
+                    <p class="price">24 THB</p>
+                    <button onclick="addToOrder('Thai Tea', 24)" class="select-button">Select</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your menu and order sections here -->
+        <div class="order-section">
+            <h3 class="order-title">Your Order</h3>
+            <ul id="order-list" class="order-list"></ul>
+            <p class="total-items">Total Items: <span id="total-items">0</span></p>
+            <p class="total-amount">Total Amount: <span id="total-amount">0</span> THB</p>
+            <button onclick="placeOrder()" class="place-order-button">Place Order</button>
+        </div>
+    </div>
+
+    <script>
+        let order = {};
+        let language = "english"; // Default language
+
+        function addToOrder(item, price) {
+            if (order[item]) {
+                order[item].quantity += 1;
+            } else {
+                order[item] = { price: price, quantity: 1 };
+            }
+            updateOrderList();
+        }
+
+        function updateOrderList() {
+            const orderList = document.getElementById('order-list');
+            const totalItems = document.getElementById('total-items');
+            const totalAmount = document.getElementById('total-amount');
+
+            orderList.innerHTML = '';
+            let itemCount = 0;
+            let totalPrice = 0;
+
+            Object.keys(order).forEach((item, index) => {
+                const quantity = order[item].quantity;
+                const price = order[item].price;
+                itemCount += quantity;
+                totalPrice += price * quantity;
+
+                // Translate ordered item for display
+                const translatedItem = translateMenuItem(item);
+                orderList.innerHTML += `<li>${index + 1}. ${translatedItem} - ${quantity} x ${price} THB</li>`;
+            });
+
+            totalItems.textContent = itemCount;
+            totalAmount.textContent = totalPrice;
+        }
+
+        function placeOrder() {
+            if (Object.keys(order).length === 0) {
+                alert("No items selected.");
+            } else {
+                alert("Order placed successfully!");
+                order = {};
+                updateOrderList();
+            }
+        }
+
+        function changeLanguage() {
+            const selectedLanguage = document.getElementById('language').value;
+            language = selectedLanguage;
+            updateTextContent();
+            updateOrderList(); // Update order list to reflect language change
+        }
+
+        function updateTextContent() {
+
+            // Update header logo based on language
+        const logo = document.querySelector('#header-logo');
+        
+        if (language === 'en') {
+            logo.src = 'logo-en.png'; // English logo
+            logo.alt = 'English Logo';
+        } else if (language === 'th') {
+            logo.src = 'logo-th.png'; // Thai logo
+            logo.alt = 'Thai Logo';
+        }
+
+            // Extended--><--=
+
+            const elements = document.querySelectorAll(' .name, .price, h2, .select-button, .order-title, .place-order-button, .header-title');
+
+            // Extended-<=>=<=>-
+
+
+            const translations = {
+                english: {
+                    "Pad Thai": "Pad Thai",
+                    "Kuay Teow": "Kuay Teow",
+                    "Kuay Teow Tom Yum": "Kuay Teow Tom Yum",
+                    "Chicken Noodle": "Chicken Noodle",
+                    "Pork Noodle": "Pork Noodle",
+                    "Boat Noodle": "Boat Noodle",
+                    "Noodles": "Noodles",
+
+
+                    "Fried Rice": "Fried Rice",
+                    "Mango Sticky Rice": "Mango Sticky Rice",
+                    "Green Curry": "Green Curry",
+                    "Tom Yum Kung": "Tom Yum Kung",
+                    "Pork Stick Rice": "Pork Stick Rice",
+                    "Papaya Salad": "Papaya Salad",
+                    "Food": "Food",
+
+
+                    "Water": "Water",
+                    "Coca Cola": "Coca Cola",
+                    "Pepsi": "Pepsi",
+                    "Thai Tea": "Thai Tea",
+                    "Drinks": "Drinks",
+
+
+                    "Your Order": "Your Order",
+                    "Total Items:": "Total Items:",
+                    "Total Amount:": "Total Amount:",
+                    "Select": "Select",
+                    "Place Order": "Place Order",
+                    "Byte Me! Menu": "Byte Me! Menu"
+                },
+
+                thai: {
+                    "Pad Thai": "ผัดไทย",
+                    "Kuay Teow": "ก๋วยเตี๋ยว",
+                    "Kuay Teow Tom Yum": "ก๋วยเตี๋ยวต้มยำ",
+                    "Chicken Noodle": "ก๋วยเตี๋ยวไก่",
+                    "Pork Noodle": "ก๋วยเตี๋ยวหมู",
+                    "Boat Noodle": "ก๋วยเตี๋ยวเรือ",
+                    "Noodles": "ก๋วยเตี๋ยว",
+
+
+                    "Fried Rice": "ข้าวผัด",
+                    "Mango Sticky Rice": "ข้าวเหนียวมะม่วง",
+                    "Green Curry": "แกงเขียวหวาน",
+                    "Tom Yum Kung": "ต้มยำกุ้ง",
+                    "Pork Stick Rice": "ข้าวหมูปิ้ง",
+                    "Papaya Salad": "ส้มตำ",
+                    "Food": "อาหาร",
+
+
+                    "Water": "น้ำ",
+                    "Coca Cola": "โค้ก",
+                    "Pepsi": "เป๊ปซี่",
+                    "Thai Tea": "ชาไทย",
+                    "Drinks": "เครื่องดื่ม",
+
+                    "Your Order": "คำสั่งซื้อของคุณ",
+                    "Total Items:": "จำนวนรวม:",
+                    "Total Amount:": "จำนวนเงินรวม:",
+                    "Select": "เลือก",
+                    "Place Order": "สั่งซื้อ",
+                    "Byte Me! Menu": "Byte Me! Menu"
+                }
+            };
+
+
+            // Static text elements
+            document.querySelector('.header-title').textContent = translations[language]["Byte Me! Menu"];
+            document.querySelector('.order-title').textContent = translations[language]["Your Order"];
+            document.querySelector('.place-order-button').textContent = translations[language]["Place Order"];
+            
+           // Navigation links
+            document.querySelector('.noodles-link').textContent = translations[language]["Noodles"];
+            document.querySelector('.rice-link').textContent = translations[language]["Food"];
+            document.querySelector('.drinks-link').textContent = translations[language]["Drinks"];
+            
+            // Total items and amount section
+            document.querySelector('.total-items').innerHTML = `${translations[language]["Total Items:"]} <span id="total-items">0</span>`;
+            document.querySelector('.total-amount').innerHTML = `${translations[language]["Total Amount:"]} <span id="total-amount">0</span> THB`;
+
+
+
+            const menuItems = document.querySelectorAll('.name'); // Target elements with class 'name'
+            menuItems.forEach(menuItem => {
+                const originalText = menuItem.getAttribute('data-original-text'); // Store original text as a data attribute
+                if (!originalText) {
+                    menuItem.setAttribute('data-original-text', menuItem.textContent); // Store original text if not stored yet
+                }
+                const translatedText = translations[language][menuItem.getAttribute('data-original-text')];
+                if (translatedText) {
+                    menuItem.textContent = translatedText; // Update menu items
+                }
+            });
+
+
+               elements.forEach(element => {
+                const originalText = element.textContent;
+                element.textContent = translations[language][originalText] || originalText;
+
+            });
+
+               // Ensure h2 and button tags are updated
+            const h2Tags = document.querySelectorAll('h2');
+            const buttonTags = document.querySelectorAll('button');
+
+            h2Tags.forEach(h2 => {
+                const originalText = h2.getAttribute('data-original-text');
+                if (!originalText) {
+                    h2.setAttribute('data-original-text', h2.textContent);
+                }
+                h2.textContent = translations[language][h2.getAttribute('data-original-text')] || h2.textContent;
+            });
+
+            buttonTags.forEach(button => {
+                const originalText = button.getAttribute('data-original-text');
+                if (!originalText) {
+                    button.setAttribute('data-original-text', button.textContent);
+                }
+                button.textContent = translations[language][button.getAttribute('data-original-text')] || button.textContent;
+            });
+
+            // Translate order list items if any are displayed
+            updateOrderList(); // Ensure the order list reflects the language change
+
+
+
+
+        }
+
+        function translateMenuItem(item) {
+            const translations = {
+                "Pad Thai": language === "thai" ? "ผัดไทย" : "Pad Thai",
+                "Kuay Teow": language === "thai" ? "ก๋วยเตี๋ยว" : "Kuay Teow",
+                "Kuay Teow Tom Yum": language === "thai" ? "ก๋วยเตี๋ยวต้มยำ" : "Kuay Teow Tom Yum",
+                "Chicken Noodle": language === "thai" ? "ก๋วยเตี๋ยวไก่" : "Chicken Noodle",
+                "Pork Noodle": language === "thai" ? "ก๋วยเตี๋ยวหมู" : "Pork Noodle",
+                "Boat Noodle": language === "thai" ? "ก๋วยเตี๋ยวเรือ" : "Boat Noodle",
+
+
+                "Fried Rice": language === "thai" ? "ข้าวผัด" : "Fried Rice",
+                "Mango Sticky Rice": language === "thai" ? "ข้าวเหนียวมะม่วง" : "Mango Sticky Rice",
+                "Green Curry": language === "thai" ? "แกงเขียวหวาน" : "Green Curry",
+                "Tom Yum Kung": language === "thai" ? "ต้มยำกุ้ง" : "Tom Yum Kung",
+                "Pork Stick Rice": language === "thai" ? "ข้าวหมูปิ้ง" : "Pork Stick Rice",
+                "Papaya Salad": language === "thai" ? "ส้มตำ" : "Papaya Salad",
+
+
+                "Water": language === "thai" ? "น้ำ" : "Water",
+                "Coca Cola": language === "thai" ? "โค้ก" : "Coca Cola",
+                "Pepsi": language === "thai" ? "เป๊ปซี่" : "Pepsi",
+                "Thai Tea": language === "thai" ? "ชาไทย" : "Thai Tea"
+            };
+
+            return translations[item] || item;
+        }
+
+        // Initialize with default language
+        updateTextContent();
+
+    </script>
+
+</body>
+</html>
