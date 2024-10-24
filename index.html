@@ -95,11 +95,11 @@
         .header-links a {
             color: #fff;
             text-decoration: none;
-            padding: 15px;
+            padding: 25px;
 /*             margin: 0 15px; */
 /*             padding: 5px 10px; */
-/*             border-radius: 20px; */
-/*             background-color: #D91656; */
+            border-radius: 20px;
+            background-color: #D91656;
         }
 
 
@@ -116,14 +116,14 @@
 
 
         .menu-section {
-            width: 80%;
-/*             padding: 20px; */
-             padding: 10px;
+            width: 85%;
+            padding: 20px;
+/*              padding: 10px; */
         }
 
 
         .category {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
 
@@ -136,7 +136,7 @@
 
         .menu-item {
             display: inline-block;
-            width: 35%;
+            width: 40%;
             padding: 10px;
             margin: 10px;
             border: 1px solid #D91656;
@@ -165,7 +165,7 @@
 
 
         .order-section {
-            width: 45%;
+            width: 50%;
             padding: 20px;
             background-color: #EE66A6;
             border-left: 1px solid #EE66A6;
@@ -182,22 +182,22 @@
 
 
 
-        .order-list {
+/*         .order-list {
             list-style-type: none;
             padding: 0;
-        }
+        } */
 
 
-        .order-list li {
+/*         .order-list li {
             padding: 10px;
             border-bottom: 1px solid #ddd;
-        }
+        } */
 
 
-        .total {
+/*         .total {
             font-weight: bold;
             margin-top: 10px;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -364,7 +364,7 @@
         <!-- Your menu and order sections here -->
         <div class="order-section">
             <h3 class="order-title">Your Order</h3>
-            <ul id="order-list" class="order-list"></ul>
+<!--             <ul id="order-list" class="order-list"></ul> -->
             <p class="total-items">Total Items: <span id="total-items">0</span></p>
             <p class="total-amount">Total Amount: <span id="total-amount">0</span> THB</p>
             <button onclick="placeOrder()" class="place-order-button">Place Order</button>
