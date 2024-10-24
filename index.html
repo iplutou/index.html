@@ -59,9 +59,9 @@
             padding: 10px; */
             background-color: #FFE1FF;
 
-            justify-content: center;
+            /*justify-content: center;
             text-align: center;
-            align-items: center;
+            align-items: center;*/
         }
 
         header {
@@ -125,6 +125,10 @@
 
         .category {
             margin-bottom: 25px;
+
+            justify-content: center;
+            text-align: center;
+            align-items: center;
         }
 
 
@@ -166,10 +170,11 @@
 
 
         .order-section {
+            text-align: left;
             width: 50%;
             padding: 20px;
             background-color: #EE66A6;
-            border-left: 1px solid #EE66A6;
+/*            border-left: 1px solid #EE66A6;*/
         }
 
 
@@ -179,19 +184,27 @@
             color: white;
             padding: 10px;
             border-radius: 10px ;
+
+             /*underline*/
+            border-bottom: 1px solid #ddd;
         }
 
 
 
         .order-list {
             list-style-type: none;
-            padding: 0;
+            padding: 1px;
+
+
+
+            /*underline*/
+            border-bottom: 1px solid #ddd;
         }
 
 
         .order-list li {
             padding: 10px;
-            border-bottom: 1px solid #ddd;
+/*            border-bottom: 1px solid #ddd;*/
         }
 
 
@@ -219,7 +232,7 @@
     </header>
        
 
-      <div class="language-selection">
+    <div class="language-selection">
         <label for="language">Choose Language:</label>
         <select id="language" onchange="changeLanguage()">
             <option value="english">English</option>
@@ -330,11 +343,7 @@
                     <p class="name">Water</p>
                     <p class="price">10 THB</p>
                     <button onclick="addToOrder('Water', 10)" class="select-button">Select</button>
-                </div>
-               
-                
-                
-                
+                </div> 
                 
                 
                 <div class="menu-item">
@@ -345,14 +354,14 @@
                 </div>
                 
                 
-                
-                
                 <div class="menu-item">
                     <img src="drink3.png" alt="Drink">
                     <p class="name">Pepsi</p>
                     <p class="price">26 THB</p>
                     <button onclick="addToOrder('Pepsi', 26)" class="select-button">Select</button>
                 </div>
+
+
                 <div class="menu-item">
                     <img src="drink4.png" alt="Drink">
                     <p class="name">Thai Tea</p>
@@ -362,13 +371,17 @@
             </div>
         </div>
 
+
+
         <!-- Your menu and order sections here -->
         <div class="order-section">
             <h3 class="order-title">Your Order</h3>
             <ul id="order-list" class="order-list"></ul>
             <p class="total-items">Total Items: <span id="total-items">0</span></p>
             <p class="total-amount">Total Amount: <span id="total-amount">0</span> THB</p>
-            <button onclick="placeOrder()" class="place-order-button">Place Order</button>
+            <center>
+                <button onclick="placeOrder()" class="place-order-button">Place Order</button>
+            </center>  
         </div>
     </div>
 
